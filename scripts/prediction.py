@@ -287,6 +287,8 @@ def get_cmems(date_start, date_end, UN_CMEMS, PW_CMEMS):
             filename_p = files[0]
         except ftplib.all_errors as e:
             print('FTP error:', e)
+            files = ftp.nlst()
+            files = [i for i in files if date in i]
             filename_w = files[0]
             filename_p = files[0]
             
