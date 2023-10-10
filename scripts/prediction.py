@@ -271,8 +271,9 @@ def get_cmems(date_start, date_end, UN_CMEMS, PW_CMEMS):
     path_p = 'Core/GLOBAL_ANALYSIS_FORECAST_PHY_001_024/global-analysis-forecast-phy-001-024/' + path_date
 
     with ftplib.FTP(url) as ftp:
+        global filename_w
+        global filename_p
         try:
-            global filename_w
             ftp.login(UN_CMEMS, PW_CMEMS)
             ftp.cwd(path_w)
             files = ftp.nlst()
@@ -285,6 +286,9 @@ def get_cmems(date_start, date_end, UN_CMEMS, PW_CMEMS):
             filename_p = files[0]
         except ftplib.all_errors as e:
             print('FTP error:', e)
+            filename_w = files[0]
+            filename_p = files[0]
+            
 
     download(url, UN_CMEMS, PW_CMEMS, path_w, filename_w)
     download(url, UN_CMEMS, PW_CMEMS, path_p, filename_p)
