@@ -276,6 +276,7 @@ def get_cmems(date_start, date_end, UN_CMEMS, PW_CMEMS):
             ftp.cwd(path_w)
             files = ftp.nlst()
             files = [i for i in files if date in i]
+            global filename_w
             filename_w = files[0]
             ftp.cwd('/')
             ftp.cwd(path_p)
