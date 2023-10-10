@@ -273,6 +273,7 @@ def get_cmems(date_start, date_end, UN_CMEMS, PW_CMEMS):
     with ftplib.FTP(url) as ftp:
         global filename_w
         global filename_p
+        global files
         try:
             ftp.login(UN_CMEMS, PW_CMEMS)
             ftp.cwd(path_w)
